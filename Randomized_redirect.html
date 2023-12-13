@@ -1,34 +1,29 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Randomized Redirect</title>
+    <title>Redirect QR Code</title>
+    <script>
+        function redirectToRandomForm() {
+            // Array containing the shortened URLs of your control and treatment forms
+            var urls = [
+                'https://nyu.qualtrics.com/jfe/form/SV_8dIGn4a7zPq8J5I', // Replace with your shortened control form URL
+                'https://nyu.qualtrics.com/jfe/form/SV_bDRkMQEoWIMdToi' // Replace with your shortened treatment form URL
+            ];
+
+            // Generate a random index (0 or 1) to select a URL
+            var randomIndex = Math.floor(Math.random() * urls.length);
+
+            // Redirect to the randomly selected URL
+            window.location.replace(urls[randomIndex]);
+        }
+    </script>
 </head>
-<body>
+<body onload="redirectToRandomForm()">
+    <p>Redirecting...</p>
+</body>
+</html>
 
-<script>
-function getRandomForm() {
-  const queryString = window.location.search;
-  const urlParams = new URLSearchParams(queryString);
-  const formParam = urlParams.get('form');
 
-  const questionnaireURLs = [
-    'https://nyu.qualtrics.com/jfe/form/SV_8dIGn4a7zPq8J5I',
-    'https://nyu.qualtrics.com/jfe/form/SV_bDRkMQEoWIMdToi'
-    // Add more questionnaire URLs as needed
-  ];
-
-  let randomIndex;
-  if (formParam) {
-    randomIndex = parseInt(formParam) <= questionnaireURLs.length ? (parseInt(formParam) - 1) : Math.floor(Math.random() * questionnaireURLs.length);
-  } else {
-    randomIndex = Math.floor(Math.random() * questionnaireURLs.length);
-  }
-
-  window.location.href = questionnaireURLs[randomIndex];
-}
-
-getRandomForm();
-</script>
 
 </body>
 </html>
