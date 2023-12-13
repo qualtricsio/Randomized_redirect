@@ -1,20 +1,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Redirect QR Code</title>
+    <title>Random Redirect</title>
     <script>
-        function redirectToRandomForm() {
-            // Array containing the shortened URLs of your control and treatment forms
+        // JavaScript code goes here
+        function redirectToRandomLink() {
             var urls = [
-                'https://nyu.qualtrics.com/jfe/form/SV_8dIGn4a7zPq8J5I', // Replace with your shortened control form URL
-                'https://nyu.qualtrics.com/jfe/form/SV_bDRkMQEoWIMdToi' // Replace with your shortened treatment form URL
+                'https://nyu.qualtrics.com/jfe/form/SV_bDRkMQEoWIMdToi', // Replace with your first link
+                'https://nyu.qualtrics.com/jfe/form/SV_8dIGn4a7zPq8J5I'  // Replace with your second link
             ];
 
-            // Generate a random index (0 or 1) to select a URL
             var randomIndex = Math.floor(Math.random() * urls.length);
-
-            // Redirect to the randomly selected URL
-            window.location.replace(urls[randomIndex]);
+            window.location.href = urls[randomIndex];
         }
     </script>
 </head>
