@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Randomized Redirect</title>
+</head>
+<body>
+
+<script>
+function getRandomForm() {
+  // Get the URL parameters
+  const queryString = window.location.search;
+  const urlParams = new URLSearchParams(queryString);
+
+  // Get the 'form' parameter value from the URL (assuming 'form' is the parameter for different questionnaire options)
+  const formParam = urlParams.get('form');
+
+  // Define your questionnaire URLs
+  const questionnaireURLs = [
+    'https://nyu.qualtrics.com/jfe/form/SV_bDRkMQEoWIMdToi',
+    'https://nyu.qualtrics.com/jfe/form/SV_8dIGn4a7zPq8J5I'
+    // Add more questionnaire URLs as needed
+  ];
+
+  // Get a random number based on the 'form' parameter value
+  let randomIndex;
+  if (formParam) {
+    randomIndex = parseInt(formParam) <= questionnaireURLs.length ? (parseInt(formParam) - 1) : Math.floor(Math.random() * questionnaireURLs.length);
+  } else {
+    randomIndex = Math.floor(Math.random() * questionnaireURLs.length);
+  }
+
+  // Redirect to the chosen questionnaire URL
+  window.location.href = questionnaireURLs[randomIndex];
+}
+
+// Call the function when the page loads
+getRandomForm();
+</script>
+
+</body>
+</html>
